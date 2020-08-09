@@ -34,7 +34,7 @@ for i in range(len(dataset_array)):
 	dataset_array[i][0] = '{}.jpg'.format(Path(np_array[i][0]).stem)
 
 print(dataset_array)
-pd.DataFrame(dataset_array).to_csv("my_dataset.csv")
+pd.DataFrame(dataset_array).sample(n=15000).to_csv("my_dataset.csv")
 
 pool = Pool(multiprocessing.cpu_count())
 list(tqdm(pool.imap_unordered(wav2jpg, range(0,len(np_array))), total=len(np_array)))
