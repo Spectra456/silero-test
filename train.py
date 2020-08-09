@@ -99,7 +99,6 @@ if __name__ == '__main__':
 	device = torch.device(args.device)
 
 	train_transformations = transforms.Compose([transforms.Resize((size[0],size[1])),
-												#transforms.ColorJitter(brightness=.05, contrast=.05, saturation=.05, hue=.05),
 												transforms.ToTensor(),
 												transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
@@ -107,8 +106,8 @@ if __name__ == '__main__':
 												transforms.ToTensor(),
 												transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 
-	train_dataset = ImageDataset('F:\Audio\dataset_jpg','F:\Audio/val.csv', transform=train_transformations)
-	test_dataset = ImageDataset('F:\Audio\dataset_jpg','F:\Audio/my_dataset_test_small.csv', transform=test_transformations)
+	train_dataset = ImageDataset('dataset_jpg/','train_jpg.csv', transform=train_transformations)
+	test_dataset = ImageDataset('dataset_jpg/','test_jpg.csv', transform=test_transformations)
 
 
 	train_loader = DataLoader(train_dataset,

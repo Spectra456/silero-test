@@ -8,7 +8,6 @@ from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from pathlib import Path
 from tqdm import tqdm
 from multiprocessing import Pool
-import multiprocessing
 
 def wav2jpg(id): #filename, target):
 	filename = np_array[id][0]
@@ -36,5 +35,5 @@ for i in range(len(dataset_array)):
 print(dataset_array)
 pd.DataFrame(dataset_array).to_csv("my_dataset.csv")
 
-pool = Pool(multiprocessing.cpu_count())
+pool = Pool(8)
 list(tqdm(pool.imap_unordered(wav2jpg, range(0,len(np_array))), total=len(np_array)))
